@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImagePanScrollBarView: UIView {
+class PanorificScrollBarView: UIView {
     
     let scrollBarLayer = CAShapeLayer()
     
