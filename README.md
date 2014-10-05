@@ -1,7 +1,7 @@
 Panorific
 =========
 
-**An immersive, intuitive, motion-based way to explore high quality panoramas and photos on an iOS device. Panorific is implemented in Swift.**
+**An immersive, intuitive, motion-based way to explore high-quality panoramas and photos on an iOS device. Panorific is implemented in Swift.**
 
 ## Installation
 [CocoaPods](http://cocoapods.org) is the recommended method of installing Panorific. Simply add the following line to your `Podfile`:
@@ -24,3 +24,14 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         }
     }
 ```
+
+## Contact
+
+Naji Dmeiri
+
+- http://github.com/ndmeiri
+- najidmeiri.com
+
+## License
+
+TTTAttributedLabel is available under the MIT license. See the LICENSE file for more info.
