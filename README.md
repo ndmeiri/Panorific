@@ -30,8 +30,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 Naji Dmeiri
 
 - http://github.com/ndmeiri
-- najidmeiri.com
 
 ## License
 
-TTTAttributedLabel is available under the MIT license. See the LICENSE file for more info.
+Panorific is available under the MIT license. See the LICENSE file for more info.
