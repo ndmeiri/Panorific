@@ -10,7 +10,9 @@ import UIKit
 
 class PanorificScrollBarView: UIView {
     
-    let scrollBarLayer = CAShapeLayer()
+    private let scrollBarLayer = CAShapeLayer()
+    
+    // MARK: - Initialization
     
     init(frame: CGRect, edgeInsets: UIEdgeInsets) {
         super.init(frame: frame)
@@ -37,6 +39,8 @@ class PanorificScrollBarView: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Instance methods
     
     func updateWithScrollAmount(scrollAmount: CGFloat, forScrollableWidth scrollableWidth: CGFloat, inScrollableArea scrollableArea: CGFloat) {
         self.scrollBarLayer.strokeStart = scrollAmount * scrollableArea
