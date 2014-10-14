@@ -29,6 +29,7 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
 Naji Dmeiri
 
+- http://najidmeiri.com
 - http://github.com/ndmeiri
 
 ## License
