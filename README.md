@@ -4,6 +4,8 @@ Panorific
 **An immersive, intuitive, motion-based way to explore high-quality panoramas and photos on an iOS device. Panorific is implemented in Swift.**
 
 <img src="screenshot.png" alt="Screenshot" width="320px"/>
+<img src="preview.gif" alt="Preview" height="568px"/>
+
 
 <!--## Installation
 [CocoaPods](http://cocoapods.org) is the recommended method of installing Panorific. Simply add the following line to your `Podfile`:
