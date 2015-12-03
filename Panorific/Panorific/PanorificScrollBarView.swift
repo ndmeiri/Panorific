@@ -18,8 +18,14 @@ class PanorificScrollBarView: UIView {
         super.init(frame: frame)
         
         let scrollBarPath = UIBezierPath()
-        scrollBarPath.moveToPoint(CGPointMake(edgeInsets.left, CGRectGetHeight(self.bounds) - edgeInsets.bottom))
-        scrollBarPath.addLineToPoint(CGPointMake(CGRectGetWidth(self.bounds) - edgeInsets.right, CGRectGetHeight(self.bounds) - edgeInsets.bottom))
+        scrollBarPath.moveToPoint(CGPointMake(
+            edgeInsets.left,
+            CGRectGetHeight(self.bounds) - edgeInsets.bottom)
+        )
+        scrollBarPath.addLineToPoint(CGPointMake(
+            CGRectGetWidth(self.bounds) - edgeInsets.right,
+            CGRectGetHeight(self.bounds) - edgeInsets.bottom)
+        )
         
         let scrollBarBackgroundLayer = CAShapeLayer()
         scrollBarBackgroundLayer.path = scrollBarPath.CGPath
@@ -36,7 +42,7 @@ class PanorificScrollBarView: UIView {
         self.layer.addSublayer(self.scrollBarLayer)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

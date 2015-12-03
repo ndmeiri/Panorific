@@ -37,23 +37,23 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         self.panningScrollView = UIScrollView(frame: self.view.bounds)
-        self.panningScrollView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        self.panningScrollView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.panningScrollView.backgroundColor = UIColor.blackColor()
         self.panningScrollView.delegate = self
         self.panningScrollView.scrollEnabled = false
         self.panningScrollView.alwaysBounceVertical = false
         self.panningScrollView.maximumZoomScale = 2.0
-        self.panningScrollView.pinchGestureRecognizer.addTarget(self, action: "pinchGestureRecognized:")
+        self.panningScrollView.pinchGestureRecognizer!.addTarget(self, action: "pinchGestureRecognized:")
         self.view.addSubview(self.panningScrollView)
         
         self.panningImageView = UIImageView(frame: self.view.bounds)
-        self.panningImageView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        self.panningImageView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.panningImageView.backgroundColor = UIColor.blackColor()
         self.panningImageView.contentMode = .ScaleAspectFit
         self.panningScrollView.addSubview(self.panningImageView)
         
         self.scrollBarView = PanorificScrollBarView(frame: self.view.bounds, edgeInsets: UIEdgeInsetsMake(0.0, 10.0, 50.0, 10.0))
-        self.scrollBarView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        self.scrollBarView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         self.scrollBarView.userInteractionEnabled = false
         self.view.addSubview(self.scrollBarView)
         
@@ -69,13 +69,14 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.panningScrollView.contentOffset = CGPointMake((self.panningScrollView.contentSize.width / 2.0) - (CGRectGetWidth(self.panningScrollView.bounds)) / 2.0,
-            (self.panningScrollView.contentSize.height / 2.0) - (CGRectGetHeight(self.panningScrollView.bounds)) / 2.0)
+        self.panningScrollView.contentOffset = CGPointMake(
+            (self.panningScrollView.contentSize.width / 2.0) - (CGRectGetWidth(self.panningScrollView.bounds)) / 2.0,
+            (self.panningScrollView.contentSize.height / 2.0) - (CGRectGetHeight(self.panningScrollView.bounds)) / 2.0
+        )
         
-        self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(),
-            withHandler: { (motion: CMDeviceMotion!, error: NSError!) -> Void in
-                self.calculateRotationBasedOnDeviceMotionRotationRate(motion)
-        })
+        self.motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { motion, _ in
+            self.calculateRotationBasedOnDeviceMotionRotationRate(motion!)
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -115,7 +116,7 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
                 let contentOffset = self.clampedContentOffsetForHorizontalOffset(interpretedXOffset)
                 
                 UIView.animateWithDuration(NSTimeInterval(MovementSmoothing), delay: 0.0,
-                    options: .BeginFromCurrentState | .AllowUserInteraction | .CurveEaseOut,
+                    options: [.BeginFromCurrentState, .AllowUserInteraction, .CurveEaseOut],
                     animations: { () -> Void in
                         self.panningScrollView.setContentOffset(contentOffset, animated: false)
                     },
@@ -201,7 +202,7 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
         return self.panningImageView
     }
     
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         scrollView.setContentOffset(self.clampedContentOffsetForHorizontalOffset(scrollView.contentOffset.x), animated: true)
     }
     
