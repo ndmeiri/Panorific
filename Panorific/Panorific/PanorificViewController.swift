@@ -80,16 +80,13 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidDisappear(animated: Bool) {
-        self.image = nil
-        
         super.viewDidDisappear(animated)
-    }
-    
-    deinit {
-        self.displayLink.invalidate()
+        
+        self.image = nil
         self.motionManager.stopDeviceMotionUpdates()
     }
     
+  
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
