@@ -43,7 +43,7 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
         self.panningScrollView.scrollEnabled = false
         self.panningScrollView.alwaysBounceVertical = false
         self.panningScrollView.maximumZoomScale = 2.0
-        self.panningScrollView.pinchGestureRecognizer!.addTarget(self, action: "pinchGestureRecognized:")
+        self.panningScrollView.pinchGestureRecognizer!.addTarget(self, action: #selector(PanorificViewController.pinchGestureRecognized(_:)))
         self.view.addSubview(self.panningScrollView)
         
         self.panningImageView = UIImageView(frame: self.view.bounds)
@@ -57,10 +57,10 @@ class PanorificViewController: UIViewController, UIScrollViewDelegate {
         self.scrollBarView.userInteractionEnabled = false
         self.view.addSubview(self.scrollBarView)
         
-        self.displayLink = CADisplayLink(target: self, selector: "displayLinkUpdate:")
+        self.displayLink = CADisplayLink(target: self, selector: #selector(PanorificViewController.displayLinkUpdate(_:)))
         self.displayLink.addToRunLoop(NSRunLoop.mainRunLoop(), forMode: NSRunLoopCommonModes)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "toggleMotionBasedPan:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PanorificViewController.toggleMotionBasedPan(_:)))
         self.view.addGestureRecognizer(tapGestureRecognizer)
         
         self.configureWithImage(self.image!)
